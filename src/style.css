@@ -1,0 +1,9 @@
+body {
+    background-color:#ccc
+}
+
+body {
+    display:flex;
+    color:#fff;
+    height: 200px
+}
