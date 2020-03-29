@@ -2,13 +2,14 @@ var merge = require('webpack-merge');
 var common = require('./webpack.common.js');
 
 module.exports = merge(common,{
+    mode:'development',
     devServer:{
         contentBase:'./build',
-        port:'8080',
+        port:'3000',
         inline:true,
         historyApiFallback:true,
         hot:true,
-        open:true
+        hotOnly:true
     },
     devtool:'inline-source-map'
 })

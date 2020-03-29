@@ -5,10 +5,15 @@ var { CleanWebpackPlugin } = require('clean-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
-    entry:path.resolve(__dirname, 'src/index'),
+    entry:{
+        main:[
+            //'react-hot-loader/path',
+            path.resolve(__dirname, 'src/index.js')
+        ],
+    },
     output:{
         path:path.resolve(__dirname,'build'),
-        filename:'bundle.js'
+        filename:'[name].js'
     },
     module:{
         rules:[
@@ -22,13 +27,23 @@ module.exports = {
             },
             {
                 test:/\.css$/,
+                include:path.resolve(__dirname,'src/containers'),
+                use: ['style-loader',
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            modules: true,
+                            localIdentName: '[name]-[local]-[hash:base64:5]',
+                            importLoaders: 1
+                        }
+                    },
+                    'postcss-loader'
+                ]
+            },
+            {
+                test:/\.css$/,
+                exclude:path.resolve(__dirname,'src/containers'),
                 use:['style-loader','css-loader','postcss-loader']
-                /*
-                use:ExtractTextPlugin.extract({
-                    fallback:'style-loader',
-                    use:['css-loader','postcss-loader']
-                })
-                */
             },
             {
                 test: /\.(png|jpg|svg|gif)$/,  // 正则匹配图片格式名
@@ -49,6 +64,9 @@ module.exports = {
         }),
         new CleanWebpackPlugin(),
         new webpack.HotModuleReplacementPlugin(),
+        new webpack.DefinePlugin({
+            'process.env.NODE_ENV':JSON.stringify(process.env.NODE_ENV)
+        }),
         new ExtractTextPlugin('css/style.css')
     ]
 }
