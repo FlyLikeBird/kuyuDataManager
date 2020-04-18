@@ -1,34 +1,21 @@
 import { actionTypes } from '../actions/indexActions';
+import { combineReducers } from 'redux'
+
+import products from './products';
+import menus from './menus'
 
 const  initialState = {
-    num:20,
-    age:30,
-    address:'gz',
-    job:'hello'
+    msg:{
+        type:1,
+        content:''
+    },
+    user:{
+
+    }
 };
 
 
-console.log('reducer updated...');
-export default (state=initialState, action)=>{
-    console.log(state);
-    console.log(action);
-    switch(action.type){
-        case actionTypes.ADD:
-            return {
-                ...state,
-                num:++state.num
-            }
-        case 'open':
-            return {
-                ...state,
-                visible:true
-            }
-        case 'close':
-            return {
-                ...state,
-                visible:false
-            }
-        default :
-            return state;
-    }
-}
+export default combineReducers({
+    products,
+    menus
+})

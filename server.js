@@ -26,7 +26,7 @@ app.listen(port,(err)=>{
     }
 });
 
-mongoose.connect(`mongodb://${config.dbHost}:${config.dbPort}/kuyouTV`, function (err) {
+mongoose.connect(`mongodb://${config.dbHost}:${config.dbPort}/kuyouTV`,{useNewUrlParser:true}, function (err) {
     if (err) {
         console.log(err, "数据库连接失败");
         return;

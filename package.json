@@ -19,6 +19,7 @@
     "@babel/preset-react": "^7.8.3",
     "autoprefixer": "^9.7.4",
     "babel-loader": "^8.0.6",
+    "babel-polyfill": "^6.26.0",
     "babel-register": "^6.26.0",
     "body-parser": "^1.19.0",
     "cheerio": "^1.0.0-rc.3",
@@ -50,12 +51,14 @@
     "concurrently": "^5.1.0",
     "connect-history-api-fallback": "^1.6.0",
     "mongoose": "^5.9.6",
+    "prop-types": "^15.7.2",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
     "react-hot-loader": "^4.12.19",
     "react-redux": "^7.2.0",
     "react-router-dom": "^5.1.2",
     "redux": "^4.0.5",
+    "redux-saga": "^1.1.3",
     "webpack-dev-middleware": "^3.7.2",
     "webpack-hot-middleware": "^2.25.0"
   }

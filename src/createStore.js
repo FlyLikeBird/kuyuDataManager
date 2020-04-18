@@ -1,7 +1,12 @@
 import { createStore, applyMiddleware, compose } from 'redux'
 import rootReducer from './reducers'
-const middlewares = [];
+import rootSaga from './sagas'
+import createSagaMiddleware from 'redux-saga'
+
 const win = window;
+const sagaMiddleware = createSagaMiddleware();
+const middlewares = [sagaMiddleware];
+
 var storeEnhancers;
 if(process.env.NODE_ENV==='production'){
     storeEnhancers = compose(
@@ -16,8 +21,10 @@ if(process.env.NODE_ENV==='production'){
 
 export default ()=>{
     var store = createStore(rootReducer, storeEnhancers);
+    sagaMiddleware.run(rootSaga);
     return store;
 }
+
 /*
 if(module.hot){
     module.hot.accept('./reducers',()=>{
@@ -25,7 +32,7 @@ if(module.hot){
         return newStore;
     })
 }
-/*
+
 export default ()=>{
     
     if(module.hot){

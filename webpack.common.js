@@ -8,6 +8,7 @@ module.exports = {
     entry:{
         main:[
             //'react-hot-loader/path',
+            'babel-polyfill',
             path.resolve(__dirname, 'src/index.js')
         ],
     },

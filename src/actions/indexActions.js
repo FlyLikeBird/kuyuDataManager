@@ -1,5 +1,6 @@
 export const actionTypes = {
-    ADD:'ADD'
+    USER_AUTH_FETCH:'USER_AUTH_FETCH',
+    
 }
 
 export const actions = {

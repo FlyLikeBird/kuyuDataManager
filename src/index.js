@@ -25,12 +25,12 @@ if(module.hot){
         render(nextApp, store);
         
     });
+
     module.hot.accept('./createStore',()=>{
         var nextCreateStore = require('./createStore').default;
         var nextStore = nextCreateStore();
         render(nextApp || App, nextStore);
     })
-
 }
 
 

@@ -1,0 +1,12 @@
+.container {
+    position:relative;  
+    background-color:#000;  
+}
+
+.container .collapse {
+    position:absolute;
+    right:0;
+    width:40px;
+    border-radius:0;
+    bottom:20px;
+}
